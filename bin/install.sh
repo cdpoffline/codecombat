@@ -49,12 +49,13 @@ then
   sudo scons || sudo scons
   sudo scons --prefix=/opt/mongo install
   sudo adduser --firstuid 100 --ingroup nogroup --shell /etc/false --disabled-password --gecos "" --no-create-home mongodb
-  sudo mkdir /var/log/mongodb/
+  sudo mkdir -p /var/log/mongodb/
   sudo chown mongodb:nogroup /var/log/mongodb/
-  sudo mkdir /var/lib/mongodb
+  sudo mkdir -p /var/lib/mongodb
   sudo chown mongodb:nogroup /var/lib/mongodb
   sudo cp debian/init.d /etc/init.d/mongod
   sudo cp debian/mongodb.conf /etc/
+  sudo rm -f /usr/bin/mongod
   sudo ln -s /opt/mongo/bin/mongod /usr/bin/mongod
   sudo chmod u+x /etc/init.d/mongod
   sudo update-rc.d mongod defaults
