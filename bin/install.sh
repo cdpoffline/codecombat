@@ -123,6 +123,9 @@ fi
 
 cd codecombat
 
+echo " - installing codecombat"
+echo " - WARNING: make sure you have 1.5 Gigabyte of memory free."
+
 npm install
 
 ( cd $( mktemp -d /tmp/coco.XXXXXXXX ) && curl http://analytics.codecombat.com:8080/dump.tar.gz | tar xzf - && mongorestore --drop --host 127.0.0.1 )
