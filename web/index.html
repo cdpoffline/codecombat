@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Lightbot</title>
+  </head>
+  <body>
+    <a href="" id="local"><h1>Offline</h1></a>
+    <a href="http://codecombat.com/play"><h1>Online</h1></a>
+    <script>
+    var proto = document.location.protocol;
+    var link = document.getElementById("local");
+    if (proto == "http:" || proto == "https:") 
+    {
+      link.href = document.location.protocol + "//" + document.location.hostname + ":3000/play";
+    } else {
+      link.href = "http://localhost:3000";
+    }
+    </script>
+  </body>
+</body>
