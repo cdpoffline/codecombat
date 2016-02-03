@@ -24,7 +24,7 @@ echo --------- activate ----------
 
 # this MUST be the same in deactivate.sh
 comment="# start the codecombat server"
-rc_local_line="sudo -u `whoami` \"`pwd`\"/start_server.sh \"$HOME\" $comment"
+rc_local_line="sudo -u mongodb mongod & sudo -u `whoami` \"`pwd`\"/start_server.sh \"$HOME\" $comment"
 escaped_rc_local_line="`echo \"$rc_local_line\" | sed -e 's/[\\/\\\\\\&]/\\\\&/g'`"
 echo "command: \"$rc_local_line\""
 echo "escaped line in /etc/rc.local: \"$escaped_rc_local_line\""
