@@ -1,2 +1,4 @@
 /mongo-nonx86
 /codecombat
+/bin/codecombat.log
+/bin/codecombat.pid

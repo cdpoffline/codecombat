@@ -6,6 +6,7 @@ cd "`dirname \"$0\"`"
 
 echo ------------------------------- MongoDB -------------------------------
 
+
 # from https://github.com/codecombat/codecombat/wiki/Dev-Setup:-Linux
 if ! type mongod 1>>/dev/null 2>>/dev/null
 then
@@ -15,6 +16,8 @@ then
   then
     sudo rm /etc/apt/sources.list.d/mongodb.list
     sudo apt-get update
+    echo "ERROR: could not install mongodb and it is not installed!"
+    exit 1
   fi
 else
   echo "mongodb is already installed."
@@ -25,6 +28,9 @@ then
   echo "ERROR: could not install modules."
   exit 1
 fi
+
+sudo mkdir -p /data/db
+sudo chown -R mongodb /data/db/
 
 echo ------------------------------- node -------------------------------
 cd "`dirname \"$0\"`"
@@ -111,4 +117,8 @@ cd codecombat
 
 npm install
 
-sudo (cd $(mktemp -d /tmp/coco.XXXXXXXX) && curl http://analytics.codecombat.com:8080/dump.tar.gz | tar xzf - && mongorestore --drop --host 127.0.0.1)
+( cd $( mktemp -d /tmp/coco.XXXXXXXX ) && curl http://analytics.codecombat.com:8080/dump.tar.gz | tar xzf - && mongorestore --drop --host 127.0.0.1 )
+
+echo "!!"
+echo "!! You will need to start the computer"
+echo "!!"
