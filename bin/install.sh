@@ -2,9 +2,17 @@
 
 set -e
 
-cd "`dirname \"$0\"`"
+if ! type realpath 2>>/dev/null 1>>/dev/null
+then
+  sudo apt-get install realpath
+fi
+
+bin_directory="`dirname \"$0\"`"
+bin_directory="`realpath \"$bin_directory\"`"
+
 
 echo ------------------------------- MongoDB -------------------------------
+cd "$bin_directory"
 
 
 # from https://github.com/codecombat/codecombat/wiki/Dev-Setup:-Linux
@@ -33,7 +41,7 @@ sudo mkdir -p /data/db
 sudo chown -R mongodb /data/db/
 
 echo ------------------------------- node -------------------------------
-cd "`dirname \"$0\"`"
+cd "$bin_directory"
 
 # instead of nodejs-legacy we install a current version
 # from https://github.com/niccokunzmann/cp-docker-development/blob/master/docker/docker/zen/setup/01_install.sh
@@ -98,7 +106,7 @@ nvm use default
 npm -g install npm@latest
 
 echo ------------------------------- codecombat -------------------------------
-cd "`dirname \"$0\"`"
+cd "$bin_directory"
 
 npm config set python `which python2.7`
 
