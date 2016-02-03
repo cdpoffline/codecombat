@@ -1,0 +1,7 @@
+overview:
+  syntax:
+    codecombat:
+#      image: overview.jpg
+      name: Code Combat
+      text: Schicke deinen Helden durch ein verlies indem du die Pläne für jedes Level schmiedest.
+      module: codecombat
