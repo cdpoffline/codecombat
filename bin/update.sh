@@ -16,6 +16,8 @@ then
   sudo -u mongodb mongod &
 fi
 
+sudo update-rc.d mongodb defaults
+
 echo --------- deactivate ----------
 
 ./deactivate.sh

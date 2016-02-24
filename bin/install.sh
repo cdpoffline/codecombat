@@ -128,8 +128,15 @@ echo " - WARNING: make sure you have 1.5 Gigabyte of memory free."
 
 npm install
 
-( cd $( mktemp -d /tmp/coco.XXXXXXXX ) && curl http://analytics.codecombat.com:8080/dump.tar.gz | tar xzf - && mongorestore --drop --host 127.0.0.1 )
+( cd $( mktemp -d /tmp/coco.XXXXXXXX1 ) && \
+  curl http://analytics.codecombat.com:8080/dump.tar.gz | \
+    tar xzf - && \
+  mongorestore --drop --host 127.0.0.1 )
+( cd $( mktemp -d /tmp/coco.XXXXXXXX2 ) && \
+  wget https://github.com/cdpoffline/codecombat/releases/download/1/dump.tar.gz && \
+  tar xzf dump.tar.gz && \
+  mongorestore --drop --host 127.0.0.1 )
 
 echo "!!"
-echo "!! You will need to start the computer"
+echo "!! You will need to restart the computer"
 echo "!!"
