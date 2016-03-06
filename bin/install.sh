@@ -18,15 +18,7 @@ cd "$bin_directory"
 # from https://github.com/codecombat/codecombat/wiki/Dev-Setup:-Linux
 if ! type mongod 1>>/dev/null 2>>/dev/null
 then
-  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-  echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" | sudo tee /etc/apt/sources.list.d/mongodb.list
-  if ! sudo apt-get update
-  then
-    sudo rm /etc/apt/sources.list.d/mongodb.list
-    sudo apt-get update
-    echo "ERROR: could not install mongodb and it is not installed!"
-    exit 1
-  fi
+  sudo apt-get -y install mongodb
 else
   echo "mongodb is already installed."
 fi
@@ -114,11 +106,12 @@ cd ..
 
 if [ -d "codecombat" ]
 then
-  cd codecombat
-  git pull https://github.com/codecombat/codecombat.git
-  cd ..
+  echo "using local version of codecombat"
+  # cd codecombat
+  # git pull https://github.com/codecombat/codecombat.git
+  # cd ..
 else
-  git clone --depth=1 https://github.com/codecombat/codecombat.git
+  git clone --depth=1 --branch=production https://github.com/codecombat/codecombat.git
 fi
 
 cd codecombat
