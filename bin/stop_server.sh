@@ -4,7 +4,7 @@ cd "`dirname \"$0\"`"
 
 if [ -f codecombat.pid ]
 then
-  if wget -O - http://locahost:3000 >>/dev/null
+  if wget -S --spider -O - http://localhost:3000 1>>/dev/null 2>>/dev/null
   then
     echo "codecombat running on port 3000"
     sudo kill -9 `cat codecombat.pid`

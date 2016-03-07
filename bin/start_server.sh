@@ -9,7 +9,7 @@ then
   HOME="$1"
 fi
 
-sudo -u mongodb mongod &
+sudo -u mongodb bash -c "mongod &"
 
 source "$HOME/.nvm/nvm.sh"
 
