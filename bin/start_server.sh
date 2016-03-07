@@ -9,6 +9,8 @@ then
   HOME="$1"
 fi
 
+sudo -u mongodb mongod &
+
 source "$HOME/.nvm/nvm.sh"
 
 ( ( cd ../codecombat ; npm start ; ) 1>codecombat.log 2>codecombat.log ; ) &
