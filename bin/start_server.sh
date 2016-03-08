@@ -8,6 +8,8 @@ then
   user=$1
 fi
 
+echo "user $user"
+
 ./stop_server.sh
 
 if [ -n "$1" ]
@@ -17,7 +19,14 @@ fi
 
 sudo -u mongodb bash -c "mongod &"
 
-source "$HOME/.nvm/nvm.sh"
 
-( ( cd ../codecombat ; sudo -u "$user" npm start ; ) 1>codecombat.log 2>codecombat.log ; ) &
+( 
+  sudo -u "$user" bash -c '
+    echo "\$HOME $HOME"
+    source "$HOME/.nvm/nvm.sh" 
+    cd ../codecombat 
+    npm start
+  ' 1>codecombat.log 2>codecombat.log 
+EOF
+) &
 echo -n $! >codecombat.pid
