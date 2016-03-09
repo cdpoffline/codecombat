@@ -2,6 +2,10 @@ overview:
   syntax:
     codecombat:
 #      image: overview.jpg
-      name: Code Combat
-      text: Schicke deinen Helden durch ein Verlies indem du die Pläne für jedes Level schmiedest.
+      name: 
+        en-en: Code Combat
+        de-de: Code Combat
+      text: 
+        en-en: Send your hero through a dungeon making plans for every level.
+        de-de: Schicke deinen Helden durch ein Verlies indem du die Pläne für jedes Level schmiedest.
       module: codecombat
